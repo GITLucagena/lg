@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha384-ODiIW8Tx1jOz5KLgHPT57z3edv8ViNYpGsdfi/DpU1ocF0xufhHzC47lXgqGqj2" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Monospace font for coding aesthetic */
+            background-color: #2e3440; /* Dark background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-y: auto;
+            color: #d8dee9; /* Light text color */
+        }
+
+        .container {
+            width: 80%;
+            background-color: #3b4252; /* Card background */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 48px;
+            text-align: center;
+            color: #88c0d0; /* Light blue color */
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .top-ten, .skill-top, .trending-top {
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #4c566a; /* Border color */
+            position: relative;
+            transition: color 0.3s ease;
+            cursor: pointer; /* Change cursor to indicate clickability */
+        }
+
+        th {
+            background-color: #4c566a; /* Table header background */
+            color: #eceff4; /* Table header text color */
+        }
+
+        .highlight {
+            background-color: #ebcb8b; /* Highlight color */
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+            background: #88c0d0;
+            transform: translateX(-50%);
+            animation: loading 1.5s linear infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        tr:hover {
+            background-color: #4c566a; /* Change background on hover */
+        }
+
+        tr:hover.loading {
+            animation: loading 1.5s linear infinite;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .buttons button {
+            background-color: #5e81ac; /* Button background */
+            color: #eceff4; /* Button text color */
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .buttons button:hover {
+            background-color: #81a1c1; /* Button hover color */
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 16px;
+            color: #d8dee9; /* Light text color */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>HALL OF FAME</h1>
+
+        <div class="top-ten">
+            <h2>Top 10 Users</h2>
+            <table id="topTenTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Overall Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight"> <!-- Highlight this row if the user is in the top 10 -->
+                        <td>1</td>
+                        <td>JohnDoe</td>
+                        <td>1780</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>JaneSmith</td>
+                        <td>1650</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>MikeBrown</td>
+                        <td>1500</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>EmilyDavis</td>
+                        <td>1380</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>ChrisJohnson</td>
+                        <td>1200</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>AnnaLee</td>
+                        <td>1100</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>TomHarris</td>
+                        <td>1050</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>LauraClark</td>
+                        <td>950</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>JamesWilson</td>
+                        <td>900</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>SarahMoore</td>
+                        <td>850</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="buttons">
+            <button onclick="showSkillTop('graphic')">Top Graphic Designers</button>
+            <button onclick="showSkillTop('coding')">Top Coders</button>
+            <button onclick="showSkillTop('logical')">Top Logical Reasoners</button>
+            <button onclick="showSkillTop('cyber')">Top Cyber Security Experts</button>
+            <!-- Add more buttons for other skills as needed -->
+        </div>
+
+        <div class="skill-top" id="skillTop" style="display:none;">
+            <h2>Top Rated Users for <span id="selectedSkill"></span></h2>
+            <table id="skillTopTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Skill Rating</th>
+                    </tr>
+                </thead>
+                <tbody id="skillTopBody">
+                    <!-- Content will be filled dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="trending-top">
+            <h2>Top 3 Trending Courses</h2>
+            <table id="trendingTopTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Course Name</th>
+                        <th>Top User</th>
+                        <th>Top Rating</th>
+                    </tr>
+                </thead>
+                <tbody id="trendingTopBody">
+                    <tr>
+                        <td>1</td>
+                        <td>Web Development</td>
+                        <td>CodeWarrior</td>
+                        <td>950</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Data Science</td>
+                        <td>DataWhiz</td>
+                        <td>930</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Graphic Design</td>
+                        <td>ArtMaster</td>
+                        <td>900</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="footer-note">
+            Keep competing to improve your ratings and climb the leaderboard!
+        </p>
+    </div>
+
+    <script>
+        let currentUser = "JohnDoe"; // Replace with the actual logged-in username
+
+        function showSkillTop(skill) {
+            const skillTopBody = document.getElementById('skillTopBody');
+            const skillTop = document.getElementById('skillTop');
+            const selectedSkill = document.getElementById('selectedSkill');
+
+            // Clear previous content
+            skillTopBody.innerHTML = '';
+
+            // Set the selected skill
+            selectedSkill.textContent = skill.charAt(0).toUpperCase() + skill.slice(1) + ' Skill';
+
+            // Sample data (replace with real data)
+            const skillData = {
+                graphic: [
+                    { rank: 1, username: 'ArtMaster', rating: 900 },
+                    { rank: 2, username: 'CreativeMind', rating: 850 },
+                    { rank: 3, username: 'DesignGuru', rating: 800 },
+                ],
+                coding: [
+                    { rank: 1, username: 'CodeWarrior', rating: 950 },
+                    { rank: 2, username: 'DevNinja', rating: 900 },
+                    { rank: 3, username: 'TechSavant', rating: 870 },
+                ],
+                logical: [
+                    { rank: 1, username: 'LogicMaster', rating: 850 },
+                    { rank: 2, username: 'PuzzleSolver', rating: 800 },
+                    { rank: 3, username: 'BrainTeaser', rating: 780 },
+                ],
+                cyber: [
+                    { rank: 1, username: 'CyberGuardian', rating: 940 },
+                    { rank: 2, username: 'HackDefender', rating: 890 },
+                    { rank: 3, username: 'SecurityExpert', rating: 860 },
+                ],
+                // Add more skill data as needed
+            };
+
+            // Populate the table with skill data
+            if (skillData[skill]) {
+                skillData[skill].forEach(user => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${user.rank}</td><td>${user.username}</td><td>${user.rating}</td>`;
+                    row.classList.add('loading'); // Add loading class for animation
+                    skillTopBody.appendChild(row);
+                });
+            }
+
+            // Show the skill top section
+            skillTop.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
+
+

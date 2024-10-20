@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cody Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha384-ODiIW8Tx1jOz5KLgHPT57z3edv8ViNYpGsdfi/DpU1ocF0xufhHzC47lXgGqGqj2" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #1e1e1e;
+            font-family: 'Courier New', Courier, monospace;
+            color: #d4d4d4;
+        }
+
+        .container {
+            width: 80%;
+            background-color: #252526;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #569cd6;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #4ec9b0;
+            margin: 20px 0;
+        }
+
+        p {
+            font-size: 20px;
+            text-align: center;
+            max-width: 800px;
+            color: #d4d4d4;
+            line-height: 1.6;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .stat {
+            background-color: #2d2d30;
+            color: #d4d4d4;
+            border-radius: 10px;
+            padding: 20px;
+            width: 30%;
+            text-align: center;
+            margin: 0 10px;
+            border: 1px solid #3e3e42;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .skill-stat {
+            background-color: #2d2d30;
+            color: #d4d4d4;
+            border-radius: 10px;
+            padding: 15px;
+            width: 22%;
+            text-align: center;
+            margin: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            border: 1px solid #3e3e42;
+            transition: background-color 0.3s ease;
+        }
+
+        .skill-stat:hover {
+            background-color: #3e3e42;
+        }
+
+        .progress-bar {
+            background-color: #3e3e42;
+            border-radius: 10px;
+            height: 10px;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .progress-fill {
+            background-color: #569cd6;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .level-progress {
+            color: #dcdcaa;
+            font-weight: bold;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 30px;
+            filter: invert(1);
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #9cdcfe;
+        }
+
+        .stat-link {
+            color: #d4d4d4; /* Change the color to match your theme */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .stat-link:hover {
+            color: #569cd6; /* Change color on hover */
+            text-decoration: underline; /* Optional: add underline on hover */
+        }
+
+        .link-section {
+            margin-top: 20px;
+        }
+
+        .link-section a {
+            display: block;
+            color: #d4d4d4;
+            margin: 10px 0;
+            text-decoration: none;
+        }
+
+        .link-section a:hover {
+            color: #569cd6;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="images/logo1.png" alt="Logo of the Learning Platform" class="logo">
+        <h1>// Command Centre</h1>
+        <p>Welcome, <strong>user.getName()</strong>!</p>
+        
+        <div class="stats">
+            <div class="stat">
+                    <h3>Recent.watchTime()</h3>
+                    <p>X hours</p>
+                </a>
+            </div>
+            <div class="stat">
+                    <h3>Courses.completed()</h3>
+                    <p>X courses</p>
+                </a>
+            </div>
+            <div class="stat">
+                    <h3>Achievements.count()</h3>
+                    <p>X badges</p>
+                </a>
+            </div>
+        </div>
+
+        <h2>// TRACK YOUR PROGRESS</h2>
+        <div class="skills">
+            <a href="file13.html" class="skill-stat">
+                <h3>Web Development</h3>
+                <p class="level-progress">Progress: 70%</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 70%;"></div>
+                </div>
+                <p class="level-progress">Level: Intermediate</p>
+            </a>
+            <a href="file14.html" class="skill-stat">
+                <h3>Data Science</h3>
+                <p class="level-progress">Progress: 50%</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 50%;"></div>
+                </div>
+                <p class="level-progress">Level: Beginner</p>
+            </a>
+            <a href="file15.html" class="skill-stat">
+                <h3>Machine Learning</h3>
+                <p class="level-progress">Progress: 40%</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%;"></div>
+                </div>
+                <p class="level-progress">Level: Beginner</p>
+            </a>
+            <a href="file16.html" class="skill-stat">
+                <h3>Cyber Security</h3>
+                <p class="level-progress">Progress: 60%</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%;"></div>
+                </div>
+                <p class="level-progress">Level: Intermediate</p>
+            </a>
+            <a href="file17.html" class="skill-stat">
+                <h3>Graphic Design</h3>
+                <p class="level-progress">Progress: 80%</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 80%;"></div>
+                </div>
+                <p class="level-progress">Level: Intermediate</p>
+            </a>
+            <a href="file18.html" class="skill-stat">
+                <h3>Digital Marketing</h3>
+                <p class="level-progress">Progress: 65%</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 65%;"></div>
+                </div>
+                <p class="level-progress">Level: Intermediate</p>
+            </a>
+        </div>
+
+        <div class="link-section">
+            <h2>Explore Skills:</h2>
+            <a href="file13.html">Web Development</a>
+            <a href="file14.html">Data Science</a>
+            <a href="file15.html">Machine Learning</a>
+            <a href="file16.html">Cyber Security</a>
+            <a href="file17.html">Graphic Design</a>
+            <a href="file18.html">Digital Marketing</a>
+        </div>
+
+        <p class="footer-note">
+            /* Our mission is to empower high-school and higher secondary students by providing a unique learning experience tailored to individual needs. 
+            Explore various pathways, participate in engaging events, and track your progress on the leaderboard. 
+            Let education be your superpower! */
+        </p>
+    </div>
+
+</body>
+</html>
+

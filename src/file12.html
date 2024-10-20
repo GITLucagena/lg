@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Quiz</title>
+
+  <!-- Import Cascadia Code from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Cascadia Code', monospace; /* Set Cascadia Code font */
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .quiz-container {
+      width: 60%;
+      margin: 50px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question p {
+      font-size: 18px;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .submit-btn:hover {
+      background-color: #218838;
+    }
+
+    .results {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #e9ffe9;
+      border: 2px solid #28a745;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h1>Web Development Quiz</h1>
+
+    <form id="quizForm">
+      <!-- Question 1 -->
+      <div class="question">
+        <p>1. What does HTML stand for?</p>
+        <input type="radio" id="q1a1" name="q1" value="correct">
+        <label for="q1a1">Hyper Text Markup Language</label><br>
+        <input type="radio" id="q1a2" name="q1" value="incorrect">
+        <label for="q1a2">High-level Text Markup Language</label><br>
+        <input type="radio" id="q1a3" name="q1" value="incorrect">
+        <label for="q1a3">Hyper Tool Markup Language</label><br>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question">
+        <p>2. Which of the following is a CSS framework?</p>
+        <input type="radio" id="q2a1" name="q2" value="incorrect">
+        <label for="q2a1">React</label><br>
+        <input type="radio" id="q2a2" name="q2" value="incorrect">
+        <label for="q2a2">Angular</label><br>
+        <input type="radio" id="q2a3" name="q2" value="correct">
+        <label for="q2a3">Bootstrap</label><br>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question">
+        <p>3. What does CSS stand for?</p>
+        <input type="radio" id="q3a1" name="q3" value="correct">
+        <label for="q3a1">Cascading Style Sheets</label><br>
+        <input type="radio" id="q3a2" name="q3" value="incorrect">
+        <label for="q3a2">Creative Style Sheets</label><br>
+        <input type="radio" id="q3a3" name="q3" value="incorrect">
+        <label for="q3a3">Colorful Style Sheets</label><br>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question">
+        <p>4. What is the correct HTML element for the largest heading?</p>
+        <input type="radio" id="q4a1" name="q4" value="correct">
+        <label for="q4a1">&lt;h1&gt;</label><br>
+        <input type="radio" id="q4a2" name="q4" value="incorrect">
+        <label for="q4a2">&lt;head&gt;</label><br>
+        <input type="radio" id="q4a3" name="q4" value="incorrect">
+        <label for="q4a3">&lt;h6&gt;</label><br>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question">
+        <p>5. Which of the following is used to style web pages?</p>
+        <input type="radio" id="q5a1" name="q5" value="correct">
+        <label for="q5a1">CSS</label><br>
+        <input type="radio" id="q5a2" name="q5" value="incorrect">
+        <label for="q5a2">PHP</label><br>
+        <input type="radio" id="q5a3" name="q5" value="incorrect">
+        <label for="q5a3">SQL</label><br>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question">
+        <p>6. What is the default display value of a &lt;div&gt; element?</p>
+        <input type="radio" id="q6a1" name="q6" value="correct">
+        <label for="q6a1">Block</label><br>
+        <input type="radio" id="q6a2" name="q6" value="incorrect">
+        <label for="q6a2">Inline</label><br>
+        <input type="radio" id="q6a3" name="q6" value="incorrect">
+        <label for="q6a3">None</label><br>
+      </div>
+
+      <!-- Question 7 -->
+      <div class="question">
+        <p>7. Which HTML attribute is used to define inline styles?</p>
+        <input type="radio" id="q7a1" name="q7" value="correct">
+        <label for="q7a1">style</label><br>
+        <input type="radio" id="q7a2" name="q7" value="incorrect">
+        <label for="q7a2">class</label><br>
+        <input type="radio" id="q7a3" name="q7" value="incorrect">
+        <label for="q7a3">styles</label><br>
+      </div>
+
+      <!-- Question 8 -->
+      <div class="question">
+        <p>8. How can you make a numbered list in HTML?</p>
+        <input type="radio" id="q8a1" name="q8" value="correct">
+        <label for="q8a1">&lt;ol&gt;</label><br>
+        <input type="radio" id="q8a2" name="q8" value="incorrect">
+        <label for="q8a2">&lt;ul&gt;</label><br>
+        <input type="radio" id="q8a3" name="q8" value="incorrect">
+        <label for="q8a3">&lt;li&gt;</label><br>
+      </div>
+
+      <!-- Question 9 -->
+      <div class="question">
+        <p>9. Which HTML tag is used to define an internal style sheet?</p>
+        <input type="radio" id="q9a1" name="q9" value="correct">
+        <label for="q9a1">&lt;style&gt;</label><br>
+        <input type="radio" id="q9a2" name="q9" value="incorrect">
+        <label for="q9a2">&lt;script&gt;</label><br>
+        <input type="radio" id="q9a3" name="q9" value="incorrect">
+        <label for="q9a3">&lt;link&gt;</label><br>
+      </div>
+
+      <!-- Question 10 -->
+      <div class="question">
+        <p>10. Which HTML attribute specifies an alternate text for an image?</p>
+        <input type="radio" id="q10a1" name="q10" value="correct">
+        <label for="q10a1">alt</label><br>
+        <input type="radio" id="q10a2" name="q10" value="incorrect">
+        <label for="q10a2">title</label><br>
+        <input type="radio" id="q10a3" name="q10" value="incorrect">
+        <label for="q10a3">src</label><br>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="button" class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+    </form>
+
+    <!-- Result Display -->
+    <div id="results" class="results"></div>
+  </div>
+
+  <script>
+    function submitQuiz() {
+      const quizForm = document.getElementById('quizForm');
+      const resultsDiv = document.getElementById('results');
+      const formData = new FormData(quizForm);
+      let score = 0;
+      let totalQuestions = 10;
+
+      // Iterate through answers and calculate score
+      for (let [key, value] of formData.entries()) {
+        if (value === 'correct') {
+          score++;
+        }
+      }
+
+      // Display the score and feedback
+      resultsDiv.style.display = 'block';
+      resultsDiv.innerHTML = `<h2>Your Score: ${score} / ${totalQuestions}</h2>`;
+
+      // Optionally display correct answers or more feedback
+      resultsDiv.innerHTML += `<p>Review your answers and check correct responses:</p>`;
+      resultsDiv.innerHTML += `
+        <ul>
+          <li><b>1:</b> Hyper Text Markup Language</li>
+          <li><b>2:</b> Bootstrap</li>
+          <li><b>3:</b> Cascading Style Sheets</li>
+          <li><b>4:</b> &lt;h1&gt;</li>
+          <li><b>5:</b> CSS</li>
+          <li><b>6:</b> Block</li>
+          <li><b>7:</b> style</li>
+          <li><b>8:</b> &lt;ol&gt;</li>
+          <li><b>9:</b> &lt;style&gt;</li>
+          <li><b>10:</b> alt</li>
+        </ul>
+      `;
+    }
+  </script>
+
+</body>
+</html>
+

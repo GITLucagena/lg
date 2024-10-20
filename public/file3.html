@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Pathways</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha384-ODiIW8Tx1jOz5KLgHPT57z3edv8ViNYpGsdfi/DpU1ocF0xufhHzC47lXgqGqj2" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Coding style font */
+            background-color: #f0f0f0; /* Light gray background */
+            margin: 0; /* Remove default margin */
+        }
+
+        .container {
+            width: 80%; /* 80% width of the viewport */
+            margin: 0 auto; /* Center the container */
+            background-color: #ffffff; /* White background for the container */
+            border-radius: 15px; /* Rounded edges */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 40px; /* Padding inside the container */
+            text-align: center; /* Center text within the container */
+        }
+
+        h1 {
+            font-size: 48px; /* Large title font size */
+            color: #003366; /* Dark blue color */
+            margin-bottom: 20px; /* Space below the title */
+        }
+
+        h2 {
+            font-size: 32px; /* Font size for subtitles */
+            color: #003366; /* Dark blue color for subtitles */
+            margin: 20px 0; /* Space above and below */
+        }
+
+        .pathway-list {
+            list-style-type: none; /* Remove bullets */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+        }
+
+        .pathway-item {
+            background-color: #e0e7ff; /* Light blue background */
+            border-radius: 10px; /* Rounded edges */
+            margin: 15px 0; /* Space between items */
+            padding: 15px; /* Padding inside items */
+            position: relative; /* Position relative for absolute elements */
+            transition: transform 0.2s; /* Smooth transform on hover */
+            cursor: pointer; /* Change cursor to pointer */
+            display: block; /* Make anchor tag behave like a block element */
+            text-decoration: none; /* Remove underline from anchor text */
+            color: inherit; /* Inherit color from parent */
+        }
+
+        .pathway-item:hover {
+            transform: scale(1.02); /* Scale up on hover */
+            background-color: #d1d9ff; /* Darken background on hover */
+        }
+
+        .tags {
+            position: absolute; /* Absolute positioning for tags */
+            top: 10px; /* Position from top */
+            right: 10px; /* Position from right */
+        }
+
+        .tag {
+            background-color: #ff0000; /* Red background for tags */
+            color: white; /* White text for tags */
+            border-radius: 5px; /* Rounded edges for tags */
+            padding: 5px 10px; /* Padding for tags */
+            margin-left: 5px; /* Space between tags */
+            font-size: 14px; /* Font size for tags */
+        }
+
+        .progress {
+            margin-top: 10px; /* Space above the progress bar */
+        }
+
+        .progress-bar {
+            background-color: #ddd; /* Light gray background for the progress bar */
+            border-radius: 10px; /* Rounded edges */
+            height: 10px; /* Height of the progress bar */
+            width: 100%; /* Full width of the parent box */
+        }
+
+        .progress-fill {
+            background-color: black; /* Black fill for the progress */
+            height: 100%; /* Full height of the progress bar */
+            border-radius: 10px; /* Match the rounded edges */
+        }
+
+        .footer-note {
+            text-align: center; /* Center the footer note */
+            margin-top: 20px; /* Space above the footer note */
+            font-size: 16px; /* Font size for the footer note */
+            color: #666; /* Gray color for footer note */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Learning Pathways</h1>
+        <h2>Explore Trending, Active, and New Pathways</h2>
+
+        <ul class="pathway-list">
+            <li>
+                <a href="https://roadmap.sh/pdfs/roadmaps/full-stack.pdf" class="pathway-item">
+                    <h3>Web Development</h3>
+                    <div class="tags">
+                        <span class="tag">Trending</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 70%;"></div> <!-- Adjust the width dynamically -->
+                        </div>
+                    </div>
+                    <p>Progress: 70%</p>
+                </a>
+            </li>
+            <li class="pathway-item">
+                <h3>Data Science</h3>
+                <div class="tags">
+                    <span class="tag">In Use</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 50%;"></div> <!-- Adjust the width dynamically -->
+                    </div>
+                </div>
+                <p>Progress: 50%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Machine Learning</h3>
+                <div class="tags">
+                    <span class="tag">Trending</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%;"></div> <!-- Adjust the width dynamically -->
+                    </div>
+                </div>
+                <p>Progress: 40%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Graphic Design</h3>
+                <div class="tags">
+                    <span class="tag">In Use</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%;"></div> <!-- Adjust the width dynamically -->
+                    </div>
+                </div>
+                <p>Progress: 80%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Digital Marketing</h3>
+                <div class="tags">
+                    <span class="tag">Trending</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%;"></div> <!-- Adjust the width dynamically -->
+                    </div>
+                </div>
+                <p>Progress: 65%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Cyber Security</h3>
+                <div class="tags">
+                    <span class="tag">In Use</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%;"></div> <!-- Adjust the width dynamically -->
+                    </div>
+                </div>
+                <p>Progress: 60%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Logical Thinking</h3>
+                <div class="tags">
+                    <span class="tag">Trending</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div> <!-- Adjust the width dynamically -->
+                    </div>
+                </div>
+                <p>Progress: 75%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Mental Ability</h3>
+                <div class="tags">
+                    <span class="tag">In Use</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 55%;"></div> <!-- Adjust the width dynamically -->
+                    </div>
+                </div>
+                <p>Progress: 55%</p>
+            </li>
+            <!-- Additional Pathways -->
+
+            <li class="pathway-item">
+                <h3>Time Management</h3>
+                <div class="tags">
+                    <span class="tag">New</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div> <!-- Not in use -->
+                    </div>
+                </div>
+                <p>Progress: 0%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Emotional Intelligence</h3>
+                <div class="tags">
+                    <span class="tag">New</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div> <!-- Not in use -->
+                    </div>
+                </div>
+                <p>Progress: 0%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Public Speaking</h3>
+                <div class="tags">
+                    <span class="tag">New</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div> <!-- Not in use -->
+                    </div>
+                </div>
+                <p>Progress: 0%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Creative Writing</h3>
+                <div class="tags">
+                    <span class="tag">New</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div> <!-- Not in use -->
+                    </div>
+                </div>
+                <p>Progress: 0%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Financial Literacy</h3>
+                <div class="tags">
+                    <span class="tag">New</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div> <!-- Not in use -->
+                    </div>
+                </div>
+                <p>Progress: 0%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Team Collaboration</h3>
+                <div class="tags">
+                    <span class="tag">New</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div> <!-- Not in use -->
+                    </div>
+                </div>
+                <p>Progress: 0%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Research Skills</h3>
+                <div class="tags">
+                    <span class="tag">New</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div> <!-- Not in use -->
+                    </div>
+                </div>
+                <p>Progress: 0%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Self-Care</h3>
+                <div class="tags">
+                    <span class="tag">New</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div> <!-- Not in use -->
+                    </div>
+                </div>
+                <p>Progress: 0%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Adaptability</h3>
+                <div class="tags">
+                    <span class="tag">New</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div> <!-- Not in use -->
+                    </div>
+                </div>
+                <p>Progress: 0%</p>
+            </li>
+            <li class="pathway-item">
+                <h3>Career Planning</h3>
+                <div class="tags">
+                    <span class="tag">New</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div> <!-- Not in use -->
+                    </div>
+                </div>
+                <p>Progress: 0%</p>
+            </li>
+        </ul>
+
+        <p class="footer-note">Explore your interests and enhance your skills!</p>
+    </div>
+
+</body>
+</html>

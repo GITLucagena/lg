@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questoria Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --terminal-black: #1E1E1E;
+            --terminal-green: #4EC9B0;
+            --terminal-blue: #569CD6;
+            --terminal-text: #D4D4D4;
+            --terminal-comment: #6A9955;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            font-family: 'Source Code Pro', monospace;
+            background-color: var(--terminal-black);
+            color: var(--terminal-text);
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .header {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 64px;
+            font-weight: 700;
+            margin: 0;
+            color: var(--terminal-green);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 3px 3px 0px rgba(78, 201, 176, 0.2);
+        }
+
+        .header::before {
+            content: '<';
+            color: var(--terminal-blue);
+            margin-right: 10px;
+        }
+
+        .header::after {
+            content: '/>';
+            color: var(--terminal-blue);
+            margin-left: 10px;
+        }
+
+        .subheader {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 24px;
+            font-weight: 400;
+            margin: 10px 0 0;
+            color: var(--terminal-comment);
+            letter-spacing: 2px;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            height: 80vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            height: 100%;
+            width: 70vw;
+            gap: 20px;
+        }
+
+        .column {
+            position: relative;
+            background-color: rgba(86, 156, 214, 0.1);
+            color: var(--terminal-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            border: 2px solid var(--terminal-blue);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            padding: 20px;
+            font-family: 'Source Code Pro', monospace;
+            overflow: hidden;
+        }
+
+        .column::before {
+            content: '{ }';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: var(--terminal-blue);
+            opacity: 0.3;
+            font-size: 20px;
+        }
+
+        .column::after {
+            content: ';';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: var(--terminal-blue);
+            opacity: 0.3;
+            font-size: 20px;
+        }
+
+        .column:hover {
+            background-color: rgba(86, 156, 214, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(86, 156, 214, 0.3);
+        }
+
+        .column-text {
+            font-size: 24px;
+            color: var(--terminal-text);
+            position: relative;
+        }
+
+        .column-text::before {
+            content: '.';
+            color: var(--terminal-blue);
+            margin-right: 5px;
+        }
+
+        .quote-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(106, 153, 85, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            width: 30%;
+            height: 100%;
+            font-size: 22px;
+            color: var(--terminal-text);
+            text-align: center;
+            font-style: italic;
+            transition: all 0.3s ease;
+            border: 2px solid var(--terminal-comment);
+            position: relative;
+            box-sizing: border-box;
+            font-family: 'Source Code Pro', monospace;
+        }
+
+        .quote-container::before {
+            content: '/*';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: var(--terminal-comment);
+            font-size: 24px;
+        }
+
+        .quote-container::after {
+            content: '*/';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: var(--terminal-comment);
+            font-size: 24px;
+        }
+
+        .quote-container:hover {
+            background-color: rgba(106, 153, 85, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(106, 153, 85, 0.3);
+        }
+
+        #quote {
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            color: var(--terminal-text);
+            line-height: 1.6;
+        }
+
+        /* Vision and Mission styling */
+        .vision-mission-section {
+            width: 70vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .vision-mission {
+            background-color: rgba(86, 156, 214, 0.1);
+            color: var(--terminal-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border: 2px solid var(--terminal-blue);
+            border-radius: 10px;
+            font-family: 'Source Code Pro', monospace;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .vision-mission:hover {
+            background-color: rgba(86, 156, 214, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(86, 156, 214, 0.3);
+        }
+
+        .vision-mission h2 {
+            font-size: 28px;
+            color: var(--terminal-green);
+            margin-bottom: 10px;
+        }
+
+        .vision-mission p {
+            font-size: 18px;
+            color: var(--terminal-text);
+        }
+    </style>
+    <script>
+        const quotes = [
+            "Education is the most powerful weapon you can use to change the world. – Nelson Mandela",
+            "The more that you learn, the more places you'll go. – Dr. Seuss",
+            "Learning never exhausts the mind. – Leonardo da Vinci",
+            "The beautiful thing about learning is that nobody can take it away from you. – B.B. King",
+            "An investment in knowledge pays the best interest. – Benjamin Franklin",
+            "Success is the sum of small efforts, repeated day in and day out. – Robert Collier",
+            "Knowledge is power. Information is liberating. – Kofi Annan",
+            "The roots of education are bitter, but the fruit is sweet. – Aristotle",
+            "The purpose of education is to replace an empty mind with an open one. – Malcolm Forbes"
+        ];
+
+        let quoteIndex = 0;
+
+        function updateQuote() {
+            const quoteElement = document.getElementById('quote');
+            quoteElement.style.opacity = 0;
+
+            setTimeout(() => {
+                quoteElement.innerText = quotes[quoteIndex];
+                quoteElement.style.opacity = 1;
+                quoteIndex = (quoteIndex + 1) % quotes.length;
+            }, 1000);
+        }
+
+        setInterval(updateQuote, 5000);
+        window.onload = updateQuote;
+    </script>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="header-section">
+            <h1 class="header">Questoria</h1>
+            <p class="subheader">Where Learning Meets Adventure</p>
+        </div>
+
+        <div class="main-content">
+            <div class="container">
+                <a href="file2.html" class="column">
+                    <span class="column-text">Command Center</span>
+                </a>
+                <a href="file3.html" class="column">
+                    <span class="column-text">Epic Quests</span>
+                </a>
+                <a href="file6.html" class="column">
+                    <span class="column-text">Hall of Fame</span>
+                </a>
+                <a href="file4.html" class="column">
+                    <span class="column-text">Live Missions</span>
+                </a>
+            </div>
+
+            <div class="quote-container">
+                <div id="quote"></div>
+            </div>
+        </div>
+
+        <div class="vision-mission-section">
+            <div class="vision-mission">
+                <h2>Vision</h2>
+                <p>To create a world where learning is an epic journey, empowering every individual to reach their highest potential.</p>
+            </div>
+            <div class="vision-mission">
+                <h2>Mission</h2>
+                <p>To inspire learners through adventure-driven quests, bridging knowledge with real-world challenges for impactful growth.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

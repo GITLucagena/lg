@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha384-ODiIW8Tx1jOz5KLgHPT57z3edv8ViNYpGsdfi/DpU1ocF0xufhHzC47lXgGqGqj2" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Coding style font */
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Stack content vertically */
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 48px;
+            text-align: center;
+            color: #003366;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .event-section {
+            margin-bottom: 50px;
+        }
+
+        .event-section h2 {
+            font-size: 32px;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .event-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .event {
+            background-color: #003366;
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            width: 30%;
+            position: relative;
+            margin-bottom: 10px; /* Minimal spacing between boxes */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 2px solid white; /* White border for distinction */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .event:hover {
+            background-color: #002244;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .event h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .event-details {
+            margin-bottom: 10px;
+        }
+
+        .event-details i {
+            margin-right: 5px;
+        }
+
+        .tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+
+        .event.completed {
+            background-color: #660000;
+        }
+
+        .event.completed:hover {
+            background-color: #990000;
+        }
+
+        .ratings {
+            display: flex;
+            align-items: center;
+        }
+
+        .ratings i {
+            margin-right: 5px;
+            color: #ffcc00; /* Gold color for ratings */
+        }
+
+        .register-button {
+            background-color: #f0ad4e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .register-button:hover {
+            background-color: #ec971f;
+        }
+
+        .topics {
+            font-size: 18px;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
+        .calendar {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0; /* Space around calendar */
+        }
+
+        .month {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 30%; /* Width of each month */
+            text-align: center; /* Center text */
+        }
+
+        .calendar-title {
+            font-size: 24px;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        .day {
+            display: inline-block;
+            width: 30px; /* Width of each day */
+            height: 30px; /* Height of each day */
+            border-radius: 50%; /* Make it round */
+            text-align: center;
+            line-height: 30px; /* Center the text vertically */
+            margin: 5px; /* Space between days */
+        }
+
+        .event-date {
+            background-color: red; /* Red background for event dates */
+            color: white; /* White text */
+        }
+
+        @media screen and (max-width: 1024px) {
+            .event {
+                width: 45%; /* Adjust width for tablets and medium screens */
+            }
+
+            .month {
+                width: 45%; /* Adjust width for months on tablets */
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .event {
+                width: 100%; /* Stack events vertically for smaller screens */
+            }
+
+            .month {
+                width: 100%; /* Stack months vertically for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Events Portal</h1>
+
+        <!-- Completed Events Section -->
+        <div class="event-section">
+            <h2>Completed Events</h2>
+            <div class="event-row">
+                <div class="event completed">
+                    <h3>Math Quiz - Algebra</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Completed: October 10, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Average Rating: 1050
+                    </div>
+                </div>
+                <div class="event completed">
+                    <h3>Programming Contest - Python Basics</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Completed: October 12, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Average Rating: 800
+                    </div>
+                </div>
+                <div class="event completed">
+                    <h3>Design Challenge - UI/UX</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Completed: October 14, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Average Rating: 950
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Events Section -->
+        <div class="event-section">
+            <h2>Upcoming Events</h2>
+            <div class="event-row">
+                <div class="event">
+                    <h3>Science Quiz - Physics</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Date: October 25, 2024
+                    </div>
+                    <div class="event-details">
+                        <i class="fas fa-hourglass-half"></i> Registration Deadline: October 24, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Rating: 700 - 1200
+                    </div>
+                    <div class="topics">
+                        <strong>Topics:</strong> Mechanics, Optics, Thermodynamics
+                    </div>
+                    <button class="register-button">Register Now</button>
+                </div>
+                <div class="event">
+                    <h3>Data Science Contest</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Date: November 1, 2024
+                    </div>
+                    <div class="event-details">
+                        <i class="fas fa-hourglass-half"></i> Registration Deadline: October 31, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Rating: 900 - 1600
+                    </div>
+                    <div class="topics">
+                        <strong>Topics:</strong> Machine Learning, Statistics
+                    </div>
+                    <button class="register-button">Register Now</button>
+                </div>
+                <div class="event">
+                    <h3>Graphic Designing Competition</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Date: November 10, 2024
+                    </div>
+                    <div class="event-details">
+                        <i class="fas fa-hourglass-half"></i> Registration Deadline: November 8, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Rating: 800 - 1500
+                    </div>
+                    <div class="topics">
+                        <strong>Topics:</strong> Branding, Layout Design
+                    </div>
+                    <button class="register-button">Register Now</button>
+                </div>
+                <div class="event">
+                    <h3>Coding Challenge - JavaScript</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Date: November 15, 2024
+                    </div>
+                    <div class="event-details">
+                        <i class="fas fa-hourglass-half"></i> Registration Deadline: November 14, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Rating: 600 - 1400
+                    </div>
+                    <div class="topics">
+                        <strong>Topics:</strong> DOM Manipulation, Asynchronous JS
+                    </div>
+                    <button class="register-button">Register Now</button>
+                </div>
+                <div class="event">
+                    <h3>Math Contest - Calculus</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Date: November 20, 2024
+                    </div>
+                    <div class="event-details">
+                        <i class="fas fa-hourglass-half"></i> Registration Deadline: November 19, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Rating: 700 - 1300
+                    </div>
+                    <div class="topics">
+                        <strong>Topics:</strong> Differentiation, Integration
+                    </div>
+                    <button class="register-button">Register Now</button>
+                </div>
+                <div class="event">
+                    <h3>Robotics Challenge</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Date: November 25, 2024
+                    </div>
+                    <div class="event-details">
+                        <i class="fas fa-hourglass-half"></i> Registration Deadline: November 24, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Rating: 900 - 1500
+                    </div>
+                    <div class="topics">
+                        <strong>Topics:</strong> Automation, Sensors
+                    </div>
+                    <button class="register-button">Register Now</button>
+                </div>
+                <div class="event">
+                    <h3>Hackathon - Innovation Day</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Date: December 5, 2024
+                    </div>
+                    <div class="event-details">
+                        <i class="fas fa-hourglass-half"></i> Registration Deadline: December 3, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Rating: 800 - 1600
+                    </div>
+                    <div class="topics">
+                        <strong>Topics:</strong> Entrepreneurship, Tech Solutions
+                    </div>
+                    <button class="register-button">Register Now</button>
+                </div>
+                <div class="event">
+                    <h3>AI & Machine Learning Workshop</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Date: December 12, 2024
+                    </div>
+                    <div class="event-details">
+                        <i class="fas fa-hourglass-half"></i> Registration Deadline: December 10, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Rating: 750 - 1500
+                    </div>
+                    <div class="topics">
+                        <strong>Topics:</strong> Neural Networks, NLP
+                    </div>
+                    <button class="register-button">Register Now</button>
+                </div>
+                <div class="event">
+                    <h3>Cybersecurity Challenge</h3>
+                    <div class="event-details">
+                        <i class="fas fa-calendar-alt"></i> Date: December 15, 2024
+                    </div>
+                    <div class="event-details">
+                        <i class="fas fa-hourglass-half"></i> Registration Deadline: December 13, 2024
+                    </div>
+                    <div class="ratings">
+                        <i class="fas fa-star"></i> Rating: 600 - 1200
+                    </div>
+                    <div class="topics">
+                        <strong>Topics:</strong> Ethical Hacking, Network Security
+                    </div>
+                    <button class="register-button">Register Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar Section -->
+        <div class="calendar">
+            <div class="month">
+                <div class="calendar-title">October 2024</div>
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day event-date">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day">14</div>
+                <div class="day event-date">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day">28</div>
+                <div class="day">29</div>
+                <div class="day">30</div>
+                <div class="day">31</div>
+            </div>
+
+            <div class="month">
+                <div class="calendar-title">November 2024</div>
+                <div class="day">1</div>
+                <div class="day event-date">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
+                <div class="day">8</div>
+                <div class="day event-date">9</div>
+                <div class="day">10</div>
+                <div class="day">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day">14</div>
+                <div class="day event-date">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day">28</div>
+                <div class="day">29</div>
+                <div class="day">30</div>
+                <div class="day">31</div>
+            </div>
+
+            <div class="month">
+                <div class="calendar-title">December 2024</div>
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day event-date">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day">11</div>
+                <div class="day event-date">12</div>
+                <div class="day">13</div>
+                <div class="day">14</div>
+                <div class="day">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day">28</div>
+                <div class="day">29</div>
+                <div class="day">30</div>
+                <div class="day">31</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
